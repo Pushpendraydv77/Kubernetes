@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort          # To expose externally on a node port
+  selector:
+    app: nginx           # Must match deployment's pod label
+  ports:
+    - protocol: TCP
+      port: 80           # Service port
+      targetPort: 80     # Container port (nginx)
+      nodePort: 30007    # External port on the node
